@@ -1,0 +1,125 @@
+2946. Matrix Similarity After Cyclic Shifts
+Solved
+Easy
+Topics
+premium lock icon
+Companies
+Hint
+You are given an m x n integer matrix mat and an integer k. The matrix rows are 0-indexed.
+
+The following proccess happens k times:
+
+Even-indexed rows (0, 2, 4, ...) are cyclically shifted to the left.
+
+
+Odd-indexed rows (1, 3, 5, ...) are cyclically shifted to the right.
+
+
+Return true if the final modified matrix after k steps is identical to the original matrix, and false otherwise.
+
+
+
+Example 1:
+
+Input: mat = [[1,2,3],[4,5,6],[7,8,9]], k = 4
+
+Output: false
+
+Explanation:
+
+In each step left shift is applied to rows 0 and 2 (even indices), and right shift to row 1 (odd index).
+
+
+
+Example 2:
+
+Input: mat = [[1,2,1,2],[5,5,5,5],[6,3,6,3]], k = 2
+
+Output: true
+
+Explanation:
+
+
+
+Example 3:
+
+Input: mat = [[2,2],[2,2]], k = 3
+
+Output: true
+
+Explanation:
+
+As all the values are equal in the matrix, even after performing cyclic shifts the matrix will remain the same.
+
+
+
+Constraints:
+
+1 <= mat.length <= 25
+1 <= mat[i].length <= 25
+1 <= mat[i][j] <= 25
+1 <= k <= 50
+
+
+Seen this question in a real interview before?
+1/5
+
+
+
+
+Shukriya Mat Kar Bhai — Ye Tera Haq Hai! 😄
+
+Visual Algorithm — Poora Flow
+Input: mat, k
+         ↓
+Step 1: k % colLen
+(effective shifts nikalo)
+         ↓
+    k == 0?
+    ↙      ↘
+  YES       NO
+   ↓         ↓
+return     Step 2:
+ true    Har row check karo
+              ↓
+         i % 2 == 0?
+         ↙        ↘
+       EVEN        ODD
+     (left)      (right)
+        ↓            ↓
+   mat[i][j]    mat[i][j]
+      ==            ==
+ mat[i][j+k]  mat[i][j-k]
+      ↓            ↓
+     NO?          NO?
+      ↓            ↓
+   return       return
+    false        false
+         ↓
+   Loop khatam
+         ↓
+     return true
+
+Kyun Yeh Algo Kaam Karta Hai — 3 Pillars
+Pillar 1 — Cyclic Property
+n shifts = original wapas
+isliye k % n = actual useful shifts
+Pillar 2 — In-Place Comparison
+Nayi array banane ki zaroorat nahi!
+Original matrix mein hi check karo —
+"Jo j pe hai, woh shift ke baad bhi
+ same position pe hona chahiye"
+Pillar 3 — Boundary Handling
+Left:  (j+k) % m       → overflow rok
+Right: (j-k+m) % m     → negative rok
+
+Real Life Se Example 😄
+Soch — 10 log circle mein khade hain
+Sab 3 step aage badhte hain
+
+Kya circle same dikhega?
+→ Sirf tab jab 3 % 10 == 0  (nahi dikhega)
+→ Ya sab same value hain    (dikhega)
+
+Yahi matrix mein ho raha hai! 🎯
+Agle problem pe chal Jarvis Jr! 🚀
