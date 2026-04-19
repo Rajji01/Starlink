@@ -74,6 +74,14 @@ public class Practice1 {
         System.out.println("---");
 
         pipeline.forEach(n -> System.out.println("Final: " + n));
+//        , ya next topic pe chalein (Collectors.teeing, flatMap traps, ya parallel stream
+        Stream.of("1","2","3")
+                .peek(System.out::println)
+                .filter(str->!str.contains("2"))
+                .map(str->Integer.valueOf(str))
+                .peek(System.out::println)
+                .limit(1);
+
 
     }
 
